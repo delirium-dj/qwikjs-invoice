@@ -1,65 +1,246 @@
-# Qwik City App ⚡️
+# 🧾 Qwik Invoice Generator
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+A modern, interactive invoice generator built with **Qwik** and **QwikCity**. Create professional invoices, customize with your logo, and export to PDF — all client-side with instant responsiveness.
+
+![Qwik](https://img.shields.io/badge/Qwik-2.0-blue?style=flat-square&logo=qwik)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=flat-square&logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ---
 
-## Project Structure
+## ✨ Features
 
-This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
+| Feature                   | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| 📝 **Editable Invoice**   | Toggle between edit and preview modes                     |
+| 🖼️ **Logo Upload**        | Add your company logo (stored as base64, embedded in PDF) |
+| 📋 **Dynamic Line Items** | Add, edit, and remove billable items                      |
+| 💰 **Auto Calculations**  | Subtotal, tax, and total calculated automatically         |
+| 📄 **PDF Export**         | Download professional PDF invoices                        |
+| 📧 **Send Invoice**       | Simulated email sending (ready for API integration)       |
+| 🎨 **Tailwind Styling**   | Clean, responsive design with Tailwind CSS                |
+| ⚡ **Instant Loading**    | Qwik's resumability for zero-JS initial load              |
 
-Inside your project, you'll see the following directory structure:
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v18+ or [Deno](https://deno.land/) v2+
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd invo
+
+# Install dependencies (choose one)
+npm install
+# or
+deno install
+```
+
+### Development
+
+```bash
+# Start development server
+npm run dev
+# or
+deno task start
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Production Build
+
+```bash
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
+
+## 📁 Project Structure
 
 ```
+invo/
 ├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
+│   └── manifest.json         # PWA manifest
+├── src/
+│   ├── components/
+│   │   ├── invoice/
+│   │   │   ├── AddressSection.tsx   # Reusable address form
+│   │   │   ├── InvoiceHeader.tsx    # Header with logo & dates
+│   │   │   └── LineItems.tsx        # Billable items table
+│   │   └── router-head/
+│   │       └── router-head.tsx      # SEO & meta tags
+│   ├── routes/
+│   │   └── index.tsx                # Main invoice page
+│   ├── types/
+│   │   └── invoice.ts               # TypeScript interfaces
+│   ├── utils/
+│   │   └── pdfGenerator.ts          # PDF generation utility
+│   ├── entry.dev.tsx                # Dev entry point
+│   ├── entry.preview.tsx            # Preview server entry
+│   ├── entry.ssr.tsx                # SSR entry point
+│   ├── global.css                   # Tailwind imports
+│   └── root.tsx                     # Root component
+├── eslint.config.js                 # ESLint configuration
+├── tailwind.config.js               # Tailwind configuration
+├── tsconfig.json                    # TypeScript configuration
+├── vite.config.ts                   # Vite build configuration
+└── package.json                     # Dependencies & scripts
 ```
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
+---
 
-- `src/components`: Recommended directory for components.
+## 🛠️ Tech Stack
 
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+| Technology                                                           | Purpose                        |
+| -------------------------------------------------------------------- | ------------------------------ |
+| [Qwik](https://qwik.dev/)                                            | UI framework with resumability |
+| [QwikCity](https://qwik.dev/docs/qwikcity/)                          | File-based routing & SSR       |
+| [TypeScript](https://www.typescriptlang.org/)                        | Type safety                    |
+| [Tailwind CSS](https://tailwindcss.com/)                             | Utility-first styling          |
+| [Vite](https://vitejs.dev/)                                          | Build tool & dev server        |
+| [jsPDF](https://github.com/parallax/jsPDF)                           | PDF generation                 |
+| [jsPDF-AutoTable](https://github.com/simonbengtsson/jsPDF-AutoTable) | Table formatting in PDFs       |
 
-## Add Integrations and deployment
+---
 
-Use the `deno qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
+## 📖 Usage Guide
 
-```shell
-deno qwik add # or `deno qwik add`
+### Creating an Invoice
+
+1. **Edit Mode** (default): Fill in all invoice details
+2. **Add Logo**: Click "Add Logo" and select an image file
+3. **Add Items**: Click "Add Line Item" to add billable services
+4. **Set Tax Rate**: Modify the tax percentage as needed
+5. **Preview**: Click "Preview Mode" to see the final invoice
+6. **Download**: Click "Download PDF" to save as PDF
+7. **Send**: Click "Send Invoice" to simulate sending
+
+### Invoice Fields
+
+| Field      | Description                             |
+| ---------- | --------------------------------------- |
+| Invoice #  | Unique identifier (auto-generated)      |
+| Date       | Invoice creation date                   |
+| Due Date   | Payment due date                        |
+| Bill From  | Your company details                    |
+| Bill To    | Client details                          |
+| Line Items | Services/products with quantity & price |
+| Tax Rate   | Percentage applied to subtotal          |
+| Notes      | Payment terms or additional info        |
+
+---
+
+## 🧩 Key Qwik Concepts Used
+
+This project demonstrates several Qwik patterns:
+
+### State Management
+
+```tsx
+// Simple values
+const isEditing = useSignal(true);
+
+// Complex objects
+const invoice = useStore<Invoice>({ ... });
 ```
 
-## Development
+### Event Handlers
 
-Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
-
-```shell
-npm start # or `deno start`
+```tsx
+// Lazy-loadable handlers with $
+const handleSave$ = $(() => {
+  // This code is only loaded when triggered
+});
 ```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+### Component Props with QRL
 
-## Preview
-
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
-
-```shell
-deno preview # or `deno preview`
+```tsx
+interface Props {
+  onDelete$: QRL<() => void>; // Lazy-loadable callback
+}
 ```
 
-## Production
+### Conditional Rendering
 
-The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
-
-```shell
-deno build # or `deno build`
+```tsx
+{isEditing ? (
+  <input value={data} onInput$={...} />
+) : (
+  <span>{data}</span>
+)}
 ```
+
+---
+
+## 📝 Educational Comments
+
+All source files include comprehensive comments explaining:
+
+- **Qwik concepts** (component$, $, useStore, useSignal)
+- **QwikCity features** (routing, SSR, document head)
+- **TypeScript patterns** (interfaces, generics, QRL types)
+- **Code architecture** (why decisions were made)
+
+Perfect for developers learning Qwik!
+
+---
+
+## 🔧 Configuration Files
+
+| File                 | Purpose                               |
+| -------------------- | ------------------------------------- |
+| `vite.config.ts`     | Build configuration with Qwik plugins |
+| `tsconfig.json`      | TypeScript compiler options           |
+| `tailwind.config.js` | Tailwind content paths & theme        |
+| `eslint.config.js`   | Linting rules (flat config)           |
+| `prettier.config.js` | Code formatting with Tailwind plugin  |
+| `deno.json`          | Deno runtime configuration            |
+
+---
+
+## 🚢 Deployment
+
+Add a deployment adapter using:
+
+```bash
+npm run qwik add
+```
+
+Available adapters:
+
+- Cloudflare Pages
+- Netlify
+- Vercel
+- Node.js Express
+- Static Site Generation (SSG)
+
+---
+
+## 📄 License
+
+MIT License - feel free to use this project for learning or commercial purposes.
+
+---
+
+## 🔗 Resources
+
+- [Qwik Documentation](https://qwik.dev/)
+- [QwikCity Routing](https://qwik.dev/docs/qwikcity/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [jsPDF Documentation](https://rawgit.com/MrRio/jsPDF/master/docs/)
+
+---
+
+Built with ⚡ by Qwik
