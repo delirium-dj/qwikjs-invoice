@@ -1,0 +1,130 @@
+{
+  /**
+   * ============================================================================
+   * TSCONFIG.JSON - TYPESCRIPT CONFIGURATION
+   * ============================================================================
+   * 
+   * This file tells TypeScript how to compile and type-check your code.
+   * It affects both your IDE experience (autocomplete, errors) and builds.
+   * 
+   * WHAT YOU'LL LEARN:
+   * - Key TypeScript compiler options
+   * - JSX configuration for Qwik
+   * - Path aliases for cleaner imports
+   * - Module resolution strategies
+   */
+  "compilerOptions": {
+    // ==========================================================================
+    // LANGUAGE FEATURES
+    // ==========================================================================
+    
+    // Allow importing JavaScript files (not just .ts/.tsx)
+    "allowJs": true,
+    
+    // ECMAScript version for output code (ES2020 is widely supported)
+    "target": "ES2020",
+    
+    // Module system format (ES2022 for modern features like top-level await)
+    "module": "ES2022",
+    
+    // Built-in type definitions to include
+    // - es2022: Modern JavaScript APIs
+    // - DOM: Browser DOM APIs (document, window, etc.)
+    // - WebWorker: Web Worker APIs
+    // - DOM.Iterable: Iterable DOM collections
+    "lib": ["es2022", "DOM", "WebWorker", "DOM.Iterable"],
+    
+    // ==========================================================================
+    // JSX CONFIGURATION (CRITICAL FOR QWIK)
+    // ==========================================================================
+    
+    // JSX transform mode - "react-jsx" uses the modern auto-import transform
+    "jsx": "react-jsx",
+    
+    // QWIK-SPECIFIC: Where JSX types come from
+    // This makes <div>, <button>, etc. use Qwik's element types
+    // Different from React which would use "react"
+    "jsxImportSource": "@builder.io/qwik",
+    
+    // ==========================================================================
+    // STRICT MODE OPTIONS
+    // ==========================================================================
+    
+    // Enable all strict type-checking options (recommended!)
+    // Catches more bugs at compile time
+    "strict": true,
+    
+    // Error if file imports use wrong casing (important for cross-platform)
+    "forceConsistentCasingInFileNames": true,
+    
+    // ==========================================================================
+    // MODULE RESOLUTION
+    // ==========================================================================
+    
+    // Allow importing JSON files as modules
+    "resolveJsonModule": true,
+    
+    // "Bundler" mode - optimized for modern bundlers like Vite
+    // Allows imports without file extensions and other modern patterns
+    "moduleResolution": "Bundler",
+    
+    // Enable default imports from CommonJS modules
+    // Allows: import module from 'module' instead of import * as module from 'module'
+    "esModuleInterop": true,
+    
+    // Skip type checking of declaration files (.d.ts)
+    // Speeds up compilation significantly
+    "skipLibCheck": true,
+    
+    // ==========================================================================
+    // BUILD OPTIMIZATION
+    // ==========================================================================
+    
+    // Use incremental compilation for faster rebuilds
+    // Stores build info to reuse between compilations
+    "incremental": true,
+    
+    // Each file must be able to be compiled in isolation
+    // Required for some build tools and faster builds
+    "isolatedModules": true,
+    
+    // Directory for TypeScript's output (though noEmit prevents actual output)
+    "outDir": "tmp",
+    
+    // Don't actually output files - Vite handles compilation
+    // TypeScript is only used for type checking
+    "noEmit": true,
+    
+    // ==========================================================================
+    // PATH ALIASES
+    // ==========================================================================
+    
+    // Define shortcut paths for imports
+    // Instead of: import { Something } from '../../../components/Something'
+    // You can use: import { Something } from '~/components/Something'
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    
+    // ==========================================================================
+    // PLUGINS
+    // ==========================================================================
+    
+    /* 
+     * CSS Modules TypeScript support
+     * Provides type definitions for CSS module imports (*.module.css)
+     * If you don't use CSS modules, you can remove this and the related package
+     */
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  
+  // ==========================================================================
+  // FILE INCLUSION
+  // ==========================================================================
+  
+  // Which files TypeScript should process
+  // - "src": All files in the src directory
+  // - "./*.d.ts": Type declaration files in root (like qwik.env.d.ts)
+  // - "./*.config.ts": Config files (like vite.config.ts)
+  "include": ["src", "./*.d.ts", "./*.config.ts"]
+}

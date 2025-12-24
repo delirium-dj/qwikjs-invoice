@@ -1,0 +1,7 @@
+{
+  "allowScripts": ["npm:@parcel/watcher@2.5.1", "npm:core-js@3.47.0", "npm:esbuild@0.25.12", "npm:less@4.5.1", "npm:sharp@0.34.5"],
+  "imports": {
+    "jspdf": "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm",
+    "jspdf-autotable": "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.29/+esm"
+  }
+}

@@ -1,0 +1,112 @@
+/**
+ * ============================================================================
+ * GLOBAL.CSS - GLOBAL STYLES & TAILWIND SETUP
+ * ============================================================================
+ * 
+ * This file contains global styles that apply to your entire application.
+ * It's imported in root.tsx to ensure styles are available everywhere.
+ * 
+ * TAILWIND CSS ARCHITECTURE:
+ * Tailwind uses a "utility-first" approach where you apply small, single-purpose
+ * classes directly in your HTML/JSX instead of writing custom CSS.
+ * 
+ * Example: Instead of writing custom CSS for a button, you compose utilities:
+ * <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+ *   Click me
+ * </button>
+ * 
+ * WHAT YOU'LL LEARN:
+ * - Tailwind's layer system (base, components, utilities)
+ * - How to add custom global styles
+ * - When to use @apply vs direct utilities
+ * 
+ * For full Tailwind CSS documentation, see:
+ * https://tailwindcss.com/docs
+ */
+
+/* ============================================================================
+   TAILWIND CSS DIRECTIVES
+   ============================================================================
+   
+   These @tailwind directives inject Tailwind's styles into your CSS.
+   They're processed at build time and replaced with actual CSS.
+*/
+
+/**
+ * @tailwind base
+ * 
+ * PREFLIGHT: Tailwind's CSS reset/normalization layer.
+ * 
+ * What it does:
+ * - Removes default browser margins/padding
+ * - Sets box-sizing: border-box on all elements
+ * - Resets heading sizes to inherit font size
+ * - Removes list styles from ul/ol
+ * - Makes images block elements
+ * - Adds sensible default styles
+ * 
+ * This ensures consistent cross-browser styling as a foundation.
+ */
+@tailwind base;
+
+/**
+ * @tailwind components
+ * 
+ * COMPONENT CLASSES: Pre-designed component patterns.
+ * 
+ * This layer is where:
+ * - Tailwind plugins add component classes (like forms plugin styles)
+ * - You can add your own reusable component classes with @layer components
+ * 
+ * Component classes are higher specificity than base but lower than utilities.
+ * This allows utilities to always override components.
+ */
+@tailwind components;
+
+/**
+ * @tailwind utilities
+ * 
+ * UTILITY CLASSES: The core of Tailwind - thousands of single-purpose classes.
+ * 
+ * Examples of utility classes:
+ * - flex, grid, block, hidden (display)
+ * - p-4, m-2, px-3, my-auto (spacing)
+ * - text-sm, font-bold, text-center (typography)
+ * - bg-blue-500, text-white, border-gray-300 (colors)
+ * - rounded-lg, shadow-md, opacity-50 (visual)
+ * - hover:bg-gray-100, md:flex, dark:bg-gray-900 (variants)
+ * 
+ * All unused utilities are removed during production build (tree-shaking).
+ */
+@tailwind utilities;
+
+/* ============================================================================
+   CUSTOM GLOBAL STYLES
+   ============================================================================
+   
+   Add your own global styles below. Use sparingly - prefer Tailwind utilities.
+   
+   WHEN TO ADD GLOBAL STYLES:
+   - Styling third-party components you can't modify
+   - Complex animations that can't be done with utilities
+   - Custom fonts or typography adjustments
+   - Print stylesheets
+   
+   USING @layer:
+   Wrap custom styles in @layer to ensure correct specificity ordering:
+   
+   @layer base {
+     // Styles for HTML elements (h1, p, a, etc.)
+     h1 { @apply text-3xl font-bold; }
+   }
+   
+   @layer components {
+     // Reusable component patterns
+     .btn-primary { @apply px-4 py-2 bg-blue-600 text-white rounded; }
+   }
+   
+   @layer utilities {
+     // Custom one-off utilities
+     .text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+   }
+*/
