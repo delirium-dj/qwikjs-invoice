@@ -34,7 +34,7 @@ A modern, interactive invoice generator built with **Qwik** and **QwikCity**. Cr
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/delirium-dj/qwikjs-invoice.git
 cd invo
 
 # Install dependencies (choose one)
@@ -243,4 +243,6 @@ MIT License - feel free to use this project for learning or commercial purposes.
 
 ---
 
-Built with ⚡ by Qwik
+Built with ⚡ Qwik by [delirium-dj](https://github.com/delirium-dj)
+
+Buy me a coffee [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/extrawebsite)
