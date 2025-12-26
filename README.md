@@ -2,9 +2,9 @@
 
 A modern, interactive invoice generator built with **Qwik** and **QwikCity**. Create professional invoices, customize with your logo, and export to PDF — all client-side with instant responsiveness.
 
-![Qwik](https://img.shields.io/badge/Qwik-2.0-blue?style=flat-square&logo=qwik)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=flat-square&logo=tailwind-css)
+![Qwik](https://img.shields.io/badge/Qwik-1.18-blue?style=flat-square&logo=qwik)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.4.5-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.17-38B2AC?style=flat-square&logo=tailwind-css)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ---
@@ -245,4 +245,4 @@ MIT License - feel free to use this project for learning or commercial purposes.
 
 Built with ⚡ Qwik by [delirium-dj](https://github.com/delirium-dj)
 
-Buy me a coffee [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/extrawebsite)
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/default-blue.png)](https://www.buymeacoffee.com/extrawebsite)
